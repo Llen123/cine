@@ -1,0 +1,67 @@
+<div class="peliculas-container">
+  <h2>🎬 Cartelera de Películas</h2>
+
+  <!-- Panel de Buscador y Filtros por Género -->
+  <div class="filtros-card">
+    <div class="search-box">
+      <input 
+        type="text" 
+        [(ngModel)]="textoBusqueda" 
+        placeholder="🔍 Buscar película por título..."
+        class="input-search"
+      >
+      @if (textoBusqueda || generosSeleccionados.length > 0) {
+        <button (click)="limpiarFiltros()" class="btn-limpiar">Limpiar filtros</button>
+      }
+    </div>
+
+    <div class="generos-filter">
+      <label>Filtrar por género (múltiple):</label>
+      <div class="chips-container">
+        @for (genero of generosDisponibles; track genero) {
+          <button 
+            type="button"
+            (click)="toggleGenero(genero)"
+            [class.active]="generosSeleccionados.includes(genero)"
+            class="chip-btn"
+          >
+            {{ genero }}
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Grilla de Películas Filtradas -->
+  <div class="peliculas-grid">
+    @for (pelicula of (peliculas | filtroGenero:generosSeleccionados:textoBusqueda); track pelicula.id) {
+      <div class="card-pelicula">
+        <img [src]="pelicula.imagenUrl" [alt]="pelicula.titulo" class="poster">
+        
+        <div class="card-body">
+          <h3>{{ pelicula.titulo }}</h3>
+          
+          <div class="tags">
+            <span class="badge-clasificacion">{{ pelicula.clasificacionEdad }}</span>
+            <span class="duracion">⏱️ {{ pelicula.duracionMinutos }} min</span>
+            <span class="rating">⭐ {{ pelicula.promedioEstrellas || 'S/E' }}</span>
+          </div>
+
+          <div class="generos">
+            @for (genero of pelicula.generos; track genero) {
+              <span class="genero-chip">{{ genero }}</span>
+            }
+          </div>
+
+          <p class="sinopsis">{{ pelicula.sinopsis }}</p>
+
+          <a [routerLink]="['/peliculas']" class="btn-comprar">Ver Funciones y Entradas</a>
+        </div>
+      </div>
+    } @empty {
+      <div class="no-results">
+        <p>🔍 No se encontraron películas que coincidan con la búsqueda o géneros seleccionados.</p>
+      </div>
+    }
+  </div>
+</div>

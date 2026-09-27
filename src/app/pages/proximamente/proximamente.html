@@ -1,0 +1,54 @@
+<div class="proximamente-container">
+  <h2>🚀 Próximos Estrenos & Preventas</h2>
+  <p class="subtitle">Enterate antes que nadie de los nuevos lanzamientos y asegurá tu lugar</p>
+
+  <div class="estrenos-grid">
+    @for (pelicula of proximosEstrenos; track pelicula.id) {
+      <div class="card-estreno">
+        @if (pelicula.esPreventa) {
+          <div class="badge-preventa">🔥 PREVENTA EXCLUSIVA</div>
+        }
+        
+        <img [src]="pelicula.imagenUrl" [alt]="pelicula.titulo" class="poster">
+
+        <div class="card-body">
+          <h3>{{ pelicula.titulo }}</h3>
+
+          <div class="info-estreno">
+            <p><strong>📅 Estreno:</strong> {{ pelicula.fechaEstreno || 'Próximamente' }}</p>
+            <p><strong>⏱️ Duración:</strong> {{ pelicula.duracionMinutos }} min</p>
+            <p><strong>🔞 Clasificación:</strong> {{ pelicula.clasificacionEdad }}</p>
+          </div>
+
+          <div class="generos">
+            @for (genero of pelicula.generos; track genero) {
+              <span class="genero-chip">{{ genero }}</span>
+            }
+          </div>
+
+          <p class="sinopsis">{{ pelicula.sinopsis }}</p>
+
+          <div class="card-actions">
+            @if (pelicula.esPreventa) {
+              <div class="precio-preventa">
+                <span class="label">Precio Preventa:</span>
+                <span class="monto">${{ pelicula.precioPreventa }}</span>
+              </div>
+              <button class="btn-preventa">Comprar Preventa</button>
+            } @else {
+              <button 
+                (click)="toggleAlerta(pelicula.id)" 
+                class="btn-alerta"
+                [class.activada]="esAlertaActivada(pelicula.id)"
+              >
+                {{ esAlertaActivada(pelicula.id) ? '🔔 Alerta Activada' : '🔕 Activar Alerta' }}
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <p class="no-data">No hay estrenos programados por el momento.</p>
+    }
+  </div>
+</div>

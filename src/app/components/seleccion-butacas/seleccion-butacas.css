@@ -1,0 +1,167 @@
+.mapa-butacas-container {
+  background-color: #1a1a2e;
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Pantalla */
+.pantalla-container {
+  perspective: 400px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.pantalla {
+  background: linear-gradient(180deg, #ffffff 0%, #a1a1a1 100%);
+  color: #000;
+  font-weight: bold;
+  height: 25px;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 4px;
+  transform: rotateX(-20deg);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  line-height: 25px;
+  letter-spacing: 3px;
+}
+
+/* Leyenda */
+.leyenda {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  font-size: 0.85rem;
+  background-color: #16213e;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.item-leyenda {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.seat-sample {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Grilla */
+.grilla-asientos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.fila-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.label-fila {
+  font-weight: bold;
+  width: 20px;
+  text-align: center;
+  color: #e94560;
+  font-size: 0.9rem;
+}
+
+.asientos-fila {
+  display: flex;
+  gap: 6px;
+}
+
+/* Estilos de botones de Butacas */
+.seat-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px 6px 2px 2px;
+  border: none;
+  background-color: #0f3460;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s;
+}
+
+.seat-btn:hover:not(:disabled) {
+  transform: scale(1.15);
+}
+
+.seat-btn.disponible {
+  background-color: #0f3460;
+}
+
+.seat-btn.seleccionada {
+  background-color: #e94560 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 8px #e94560;
+}
+
+.seat-btn.ocupada {
+  background-color: #333333 !important;
+  color: #666666 !important;
+  cursor: not-allowed;
+}
+
+.seat-btn.discapacidad {
+  background-color: #0284c7;
+}
+
+.seat-btn.vip {
+  background-color: #eab308;
+  color: #000000;
+}
+
+/* Muestras de la leyenda */
+.seat-sample.disponible { background-color: #0f3460; }
+.seat-sample.seleccionada { background-color: #e94560; }
+.seat-sample.ocupada { background-color: #333333; }
+.seat-sample.discapacidad { background-color: #0284c7; }
+.seat-sample.vip { background-color: #eab308; }
+
+/* Resumen */
+.resumen-seleccion {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #0f3460;
+}
+
+.chips-butacas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.chip-asiento {
+  background-color: #16213e;
+  border: 1px solid #e94560;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.monto-total {
+  font-size: 1.1rem;
+  color: #e94560;
+}
+
+.text-muted {
+  color: #888888;
+  font-size: 0.85rem;
+}

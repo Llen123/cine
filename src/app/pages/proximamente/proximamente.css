@@ -1,0 +1,152 @@
+.proximamente-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  color: #ffffff;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #e94560;
+  margin-bottom: 0.3rem;
+}
+
+.subtitle {
+  color: #aaaaaa;
+  margin-bottom: 2rem;
+}
+
+.estrenos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card-estreno {
+  background-color: #1a1a2e;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-preventa {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #eab308;
+  color: #000000;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.poster {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  background-color: #0f3460;
+}
+
+.card-body {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-body h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.25rem;
+}
+
+.info-estreno p {
+  margin: 3px 0;
+  font-size: 0.85rem;
+  color: #dddddd;
+}
+
+.generos {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.genero-chip {
+  background-color: #0f3460;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.sinopsis {
+  font-size: 0.88rem;
+  color: #cccccc;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.precio-preventa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #16213e;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.precio-preventa .monto {
+  color: #eab308;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.btn-preventa {
+  background-color: #eab308;
+  color: #000000;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-preventa:hover {
+  background-color: #ca9a06;
+}
+
+.btn-alerta {
+  background-color: #0f3460;
+  color: #ffffff;
+  border: 1px solid #1f4068;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-alerta.activada {
+  background-color: #2b580c;
+  border-color: #2b580c;
+}
+
+.no-data {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #888;
+}

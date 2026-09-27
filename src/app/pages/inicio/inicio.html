@@ -1,0 +1,50 @@
+<div class="inicio-container">
+  <!-- Hero / Banner Principal -->
+  <section class="hero-banner">
+    <div class="hero-content">
+      <h1>¡Viví la mejor experiencia de cine! 🍿🎬</h1>
+      <p>Registrate hoy y obtené un <strong>20% de descuento</strong> en tu primera compra. Además, sumá 1 punto por cada peso gastado.</p>
+      <div class="hero-buttons">
+        <a routerLink="/peliculas" class="btn-primary">Ver Cartelera Completa</a>
+        <a routerLink="/registro" class="btn-secondary">Registrarse</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Las 3 Películas Más Vendidas -->
+  <section class="destacadas-section">
+    <h2>🔥 Las 3 Películas Más Vendidas</h2>
+    <p class="section-subtitle">Las favoritas del público esta semana</p>
+
+    <div class="peliculas-grid">
+      @for (pelicula of peliculasDestacadas; track pelicula.id) {
+        <div class="card-pelicula">
+          <div class="badge-ranking">Top #{{ $index + 1 }}</div>
+          <img [src]="pelicula.imagenUrl" [alt]="pelicula.titulo" class="poster">
+          
+          <div class="card-body">
+            <h3>{{ pelicula.titulo }}</h3>
+            
+            <div class="tags">
+              <span class="badge-clasificacion">{{ pelicula.clasificacionEdad }}</span>
+              <span class="duracion">⏱️ {{ pelicula.duracionMinutos }} min</span>
+              <span class="rating">⭐ {{ pelicula.promedioEstrellas || 'S/E' }}</span>
+            </div>
+
+            <div class="generos">
+              @for (genero of pelicula.generos; track genero) {
+                <span class="genero-chip">{{ genero }}</span>
+              }
+            </div>
+
+            <p class="sinopsis">{{ pelicula.sinopsis }}</p>
+
+            <a [routerLink]="['/peliculas']" class="btn-comprar">Comprar Entradas</a>
+          </div>
+        </div>
+      } @empty {
+        <p class="no-data">No hay películas destacadas disponibles en este momento.</p>
+      }
+    </div>
+  </section>
+</div>

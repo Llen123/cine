@@ -1,0 +1,62 @@
+<div class="mapa-butacas-container">
+  <!-- PANTALLA CINE -->
+  <div class="pantalla-container">
+    <div class="pantalla">PANTALLA</div>
+  </div>
+
+  <!-- LEYENDA -->
+  <div class="leyenda">
+    <div class="item-leyenda"><span class="seat-sample disponible"></span> Disponible</div>
+    <div class="item-leyenda"><span class="seat-sample seleccionada"></span> Seleccionada</div>
+    <div class="item-leyenda"><span class="seat-sample ocupada"></span> Ocupada</div>
+    <div class="item-leyenda"><span class="seat-sample discapacidad"></span> Discapacidad (J, K)</div>
+    <div class="item-leyenda"><span class="seat-sample vip"></span> VIP (R, S, T)</div>
+  </div>
+
+  <!-- GRILLA DE BUTACAS -->
+  <div class="grilla-asientos">
+    @for (fila of matrizButacas; track $index) {
+      <div class="fila-row">
+        <span class="label-fila">{{ fila[0].fila }}</span>
+
+        <div class="asientos-fila">
+          @for (butaca of fila; track butaca.id) {
+            <button
+              type="button"
+              class="seat-btn"
+              [class.ocupada]="butaca.estado === 'ocupada'"
+              [class.seleccionada]="butaca.estado === 'seleccionada'"
+              [class.discapacidad]="butaca.tipo === 'discapacidad' && butaca.estado !== 'seleccionada'"
+              [class.vip]="butaca.tipo === 'vip' && butaca.estado !== 'seleccionada'"
+              [disabled]="butaca.estado === 'ocupada'"
+              (click)="seleccionarButaca(butaca)"
+              [appDestacarButaca]="butaca.tipo"
+              [title]="'Fila ' + butaca.fila + ' Asiento ' + butaca.numero + ' - $' + butaca.precio"
+            >
+              {{ butaca.numero }}
+            </button>
+          }
+        </div>
+
+        <span class="label-fila">{{ fila[0].fila }}</span>
+      </div>
+    }
+  </div>
+
+  <!-- RESUMEN SELECCIÓN -->
+  <div class="resumen-seleccion">
+    <h4>🎟️ Asientos Seleccionados: {{ butacasSeleccionadas.length }}</h4>
+    @if (butacasSeleccionadas.length > 0) {
+      <div class="chips-butacas">
+        @for (b of butacasSeleccionadas; track b.id) {
+          <span class="chip-asiento">
+            {{ b.id }} ({{ b.tipo | uppercase }}) - ${{ b.precio }}
+          </span>
+        }
+      </div>
+      <p class="monto-total">Total: <strong>${{ totalPrecio }}</strong></p>
+    } @else {
+      <p class="text-muted">Hacé clic en una butaca disponible para seleccionarla.</p>
+    }
+  </div>
+</div>
